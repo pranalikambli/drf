@@ -1,7 +1,4 @@
 from django.urls import path, include, re_path
-from django.views.generic import TemplateView
-from django.views.decorators.csrf import csrf_exempt
-from rest_framework.schemas import get_schema_view
 
 # drf_yasg code starts here
 from rest_framework import permissions
@@ -25,9 +22,9 @@ urlpatterns = [
     re_path(r'^doc(?P<format>\.json|\.yaml)$',
             schema_view.without_ui(cache_timeout=0), name='schema-json'),  # <-- Here
     path('doc/', schema_view.with_ui('swagger', cache_timeout=0),
-         name='schema-swagger-ui'),  # <-- Here
+         name='schema-swagger-ui'),
     path('redoc/', schema_view.with_ui('redoc', cache_timeout=0),
-         name='schema-redoc'),  # <-- Here
+         name='schema-redoc'),
     path('rest-auth/', include('rest_auth.urls')),
     path('rest-auth/registration/', include('rest_auth.registration.urls')),
     path('category/', views.CategoryAPI.as_view()),

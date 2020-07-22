@@ -47,32 +47,9 @@ INSTALLED_APPS = [
     'allauth',
     'allauth.account',
     'rest_auth.registration',
-    # 'rest_framework_swagger',
 
     'api',
 ]
-
-
-# SWAGGER_SETTINGS = {
-#     "exclude_namespaces": ['rest_logout', ],  # List URL namespaces to ignore
-#     "SUPPORTED_SUBMIT_METHODS": [  # Specify which methods to enable in Swagger UI
-#         'get',
-#         'post',
-#         'put',
-#         'delete'
-#     ],
-#     'SECURITY_DEFINITIONS': {
-#         'api_key': {
-#             'type': 'apiKey',
-#             'in': 'header',
-#             'name': 'Authorization'
-#         }
-#     },
-#     'USE_SESSION_AUTH': True,
-#     'JSON_EDITOR': True,
-#     'REFETCH_SCHEMA_ON_LOGOUT': True
-#
-# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -131,6 +108,33 @@ DATABASES = {
    }
 }
 
+
+SWAGGER_SETTINGS = {
+    "exclude_namespaces": ['rest_logout', ],  # List URL namespaces to ignore
+    "SUPPORTED_SUBMIT_METHODS": [  # Specify which methods to enable in Swagger UI
+        'get',
+        'post',
+        'put',
+        'delete'
+    ],
+    'SECURITY_DEFINITIONS': {
+        'api_key': {
+            'type': 'apiKey',
+            'in': 'header',
+            'name': 'Authorization'
+        },
+        'basic': {
+            'type': 'basic'
+        }
+    },
+    'USE_SESSION_AUTH': False,
+    'JSON_EDITOR': True,
+    'REFETCH_SCHEMA_ON_LOGOUT': True
+
+}
+REDOC_SETTINGS = {
+   'LAZY_RENDERING': False,
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
