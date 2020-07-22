@@ -40,6 +40,8 @@ class CategoryAPI(APIView):
     def post(self, request, format=None):
         """
         To create categories.
+        sample :
+        {"name": "Home","subcategory_of": ""}{"name": "Home","subcategory_of": "home decor"}
         :param request: name, subcategory_of
         :param format: @name : string, @ subcategory_of: string
         :return: Status 200 on success else 404 for bad request.
@@ -95,6 +97,7 @@ class ProductAPI(APIView):
     def post(self, request, format=None):
         """
         Create product.
+        sample : {"name": "abc","price": "10.10","categories": [17,18,19,20]}
         :param request: name, price, categories
         :param format: @name : string, @price: decimal, @categories: list
         :return: Status 200 on success else 404 for bad request.
